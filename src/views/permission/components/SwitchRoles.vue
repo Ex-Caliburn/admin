@@ -10,21 +10,21 @@
 </template>
 
 <script>
-export default {
-  computed: {
-    roles() {
-      return this.$store.getters.roles
-    },
-    switchRoles: {
-      get() {
-        return this.roles[0]
+  export default {
+    computed: {
+      roles() {
+        return this.$store.getters.roles
       },
-      set(val) {
-        this.$store.dispatch('ChangeRoles', val).then(() => {
-          this.$emit('change')
-        })
+      switchRoles: {
+        get() {
+          return this.roles[0]
+        },
+        set(val) {
+          this.$store.dispatch('ChangeRoles', val).then(() => {
+            this.$emit('change')
+          })
+        }
       }
     }
   }
-}
 </script>

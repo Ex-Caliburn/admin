@@ -1,7 +1,7 @@
 <template>
   <div class="image-previewer">
     <ul class="flex flex-wrap ul-reset">
-      <li v-for="(pictureSrc, pictureIndex) in prePictureList"  :key="pictureSrc">
+      <li v-for="(pictureSrc, pictureIndex) in prePictureList" :key="pictureSrc">
         <img
           :style="{'max-height': height + 'px'}"
           class="small-picture"
@@ -26,22 +26,22 @@
           </div>
         </div>
         <img ref="img" :src="domain + prePictureList[currentIndex]">
-        <div v-if="currentIndex > 0" class="left arrow" @click="updatePreview('-')"> < </div>
-        <div v-if="currentIndex < prePictureList.length - 1" class="right arrow" @click="updatePreview('+')"> > </div>      </div>
+        <div v-if="currentIndex > 0" class="left arrow" @click="updatePreview('-')"> <</div>
+        <div v-if="currentIndex < prePictureList.length - 1" class="right arrow" @click="updatePreview('+')"> ></div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-  export default{
+  export default {
     name: 'image-previewer',
-    filters: {
-    },
+    filters: {},
     props: {
       prePictureList: {
         type: Array,
         required: true,
-        default () {
+        default() {
           return []
         }
       },
@@ -54,7 +54,7 @@
         default: 150
       }
     },
-    data () {
+    data() {
       return {
         currentIndex: null,
         preview: false,
@@ -67,29 +67,29 @@
       }
     },
     watch: {
-      preview (val) {
+      preview(val) {
         document.getElementsByTagName('body')[0].style.overflow = val ? 'hidden' : 'auto'
       },
-      sIndex (s) {
+      sIndex(s) {
         this.scaleTxt = 100 + (s * 20)
       }
     },
     methods: {
-      preImg (pictureIndex) {
+      preImg(pictureIndex) {
         this.currentIndex = pictureIndex
         this.preview = true
       },
-      hidePreview () {
+      hidePreview() {
         this.preview = false
       },
-      clearStyle () {
+      clearStyle() {
         this.$refs.img.style.width = ''
         this.$refs.img.style.transform = ''
         this.rIndex = 0
         this.sIndex = 0
         this.imgW = 0
       },
-      zoomStyle (i) {
+      zoomStyle(i) {
         if ((i > 0 && this.sIndex) > 4 || (i < 0 && this.sIndex <= -4)) {
           return
         }
@@ -99,10 +99,10 @@
         }
         this.$refs.img.style.width = this.imgW * (1 + (this.scale * this.sIndex)) + 'px'
       },
-      rotateStyle () {
+      rotateStyle() {
         this.$refs.img.style.transform = 'rotate(' + this.rIndex * this.rotate + 'deg)'
       },
-      updatePreview (s) {
+      updatePreview(s) {
         switch (s) {
           case '+':
             this.currentIndex++
@@ -134,21 +134,23 @@
   }
 </script>
 <style lang="scss" scoped>
-  .revert{
+  .revert {
     transform: scaleY(-1);
   }
-  i{
+
+  i {
     font-size: 40px;
     color: white;
   }
+
   .image-previewer {
-    .ul-reset{
+    .ul-reset {
       padding: 0;
     }
-    &>ul{
+    & > ul {
       display: flex;
       flex-wrap: wrap;
-      &>li{
+      & > li {
         line-height: 0;
         margin-right: 5px;
         margin-bottom: 5px;
@@ -167,7 +169,7 @@
       width: 100%;
       height: 100%;
       z-index: 9998;
-      overflow:auto;
+      overflow: auto;
       background-color: rgba(0, 0, 0, 0.5);
       .img-mask-box {
         width: 100vw;
@@ -185,11 +187,11 @@
           position: fixed;
           top: 0;
           left: 0;
-          z-index:1;
+          z-index: 1;
           .scale {
             width: 50px;
             text-align: center;
-            font-size:20px;
+            font-size: 20px;
           }
         }
         img {
@@ -211,7 +213,7 @@
           color: #fff;
           cursor: pointer;
         }
-        .arrow:hover{
+        .arrow:hover {
           background-color: rgba(0, 0, 0, 0.6);
         }
         .left {

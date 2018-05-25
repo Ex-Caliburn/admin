@@ -24,20 +24,20 @@
 </template>
 
 <script>
-import splitPane from 'vue-splitpane'
+  import splitPane from 'vue-splitpane'
 
-export default {
-  name: 'splitpane-demo',
-  components: { splitPane },
-  methods: {
-    resize() {
-      console.log('resize')
+  export default {
+    name: 'splitpane-demo',
+    components: { splitPane },
+    methods: {
+      resize() {
+        console.log('resize')
+      }
     }
   }
-}
 </script>
 
-<style  scoped>
+<style scoped>
   .components-container {
     position: relative;
     height: 100vh;

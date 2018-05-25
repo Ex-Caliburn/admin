@@ -12,32 +12,32 @@
 </template>
 
 <script>
-import elDragDialog from '@/directive/el-dragDialog' // base on element-ui
+  import elDragDialog from '@/directive/el-dragDialog' // base on element-ui
 
-export default {
-  name: 'dragDialog-demo',
-  directives: { elDragDialog },
-  data() {
-    return {
-      dialogTableVisible: false,
-      gridData: [{
-        date: '2016-05-02',
-        name: 'John Smith',
-        address: 'No.1518,  Jinshajiang Road, Putuo District'
-      }, {
-        date: '2016-05-04',
-        name: 'John Smith',
-        address: 'No.1518,  Jinshajiang Road, Putuo District'
-      }, {
-        date: '2016-05-01',
-        name: 'John Smith',
-        address: 'No.1518,  Jinshajiang Road, Putuo District'
-      }, {
-        date: '2016-05-03',
-        name: 'John Smith',
-        address: 'No.1518,  Jinshajiang Road, Putuo District'
-      }]
+  export default {
+    name: 'dragDialog-demo',
+    directives: { elDragDialog },
+    data() {
+      return {
+        dialogTableVisible: false,
+        gridData: [{
+          date: '2016-05-02',
+          name: 'John Smith',
+          address: 'No.1518,  Jinshajiang Road, Putuo District'
+        }, {
+          date: '2016-05-04',
+          name: 'John Smith',
+          address: 'No.1518,  Jinshajiang Road, Putuo District'
+        }, {
+          date: '2016-05-01',
+          name: 'John Smith',
+          address: 'No.1518,  Jinshajiang Road, Putuo District'
+        }, {
+          date: '2016-05-03',
+          name: 'John Smith',
+          address: 'No.1518,  Jinshajiang Road, Putuo District'
+        }]
+      }
     }
   }
-}
 </script>

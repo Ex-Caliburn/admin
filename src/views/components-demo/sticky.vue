@@ -26,7 +26,8 @@
       </el-dropdown>
 
       <div class="time-container">
-        <el-date-picker v-model="time" type="datetime" :picker-options="pickerOptions" format="yyyy-MM-dd HH:mm:ss" placeholder="Release time">
+        <el-date-picker v-model="time" type="datetime" :picker-options="pickerOptions" format="yyyy-MM-dd HH:mm:ss"
+                        placeholder="Release time">
         </el-date-picker>
       </div>
 
@@ -94,37 +95,37 @@
 
 
 <script>
-import Sticky from '@/components/Sticky'
+  import Sticky from '@/components/Sticky'
 
-export default {
-  name: 'sticky-demo',
-  components: { Sticky },
-  data() {
-    return {
-      time: '',
-      url: '',
-      platforms: ['a-platform'],
-      platformsOptions: [
-        { key: 'a-platform', name: 'platformA' },
-        { key: 'b-platform', name: 'platformB' },
-        { key: 'c-platform', name: 'platformC' }
-      ],
-      pickerOptions: {
-        disabledDate(time) {
-          return time.getTime() > Date.now()
+  export default {
+    name: 'sticky-demo',
+    components: { Sticky },
+    data() {
+      return {
+        time: '',
+        url: '',
+        platforms: ['a-platform'],
+        platformsOptions: [
+          { key: 'a-platform', name: 'platformA' },
+          { key: 'b-platform', name: 'platformB' },
+          { key: 'c-platform', name: 'platformC' }
+        ],
+        pickerOptions: {
+          disabledDate(time) {
+            return time.getTime() > Date.now()
+          }
         }
       }
     }
   }
-}
 </script>
 
 <style scoped>
-.components-container div {
-  margin: 10px;
-}
+  .components-container div {
+    margin: 10px;
+  }
 
-.time-container {
-  display: inline-block;
-}
+  .time-container {
+    display: inline-block;
+  }
 </style>

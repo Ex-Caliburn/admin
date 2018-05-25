@@ -56,7 +56,8 @@
         fixed="right"
         prop="desc" label="操作" min-width="200">
         <template slot-scope="scope">
-          <el-button type="primary" size="medium" class="blue cur-pointer" @click="audit(scope.row.userId)">通过审核</el-button>
+          <el-button type="primary" size="medium" class="blue cur-pointer" @click="audit(scope.row.userId)">通过审核
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
