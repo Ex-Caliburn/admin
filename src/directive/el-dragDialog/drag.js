@@ -1,5 +1,5 @@
 export default {
-  bind(el, binding) {
+  bind (el, binding) {
     const dialogHeaderEl = el.querySelector('.el-dialog__header')
     const dragDom = el.querySelector('.el-dialog')
     dialogHeaderEl.style.cssText += ';cursor:move;'

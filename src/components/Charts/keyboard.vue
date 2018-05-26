@@ -26,15 +26,15 @@
         default: '200px'
       }
     },
-    data() {
+    data () {
       return {
         chart: null
       }
     },
-    mounted() {
+    mounted () {
       this.initChart()
     },
-    beforeDestroy() {
+    beforeDestroy () {
       if (!this.chart) {
         return
       }
@@ -42,7 +42,7 @@
       this.chart = null
     },
     methods: {
-      initChart() {
+      initChart () {
         this.chart = echarts.init(document.getElementById(this.id))
 
         const xAxisData = []
@@ -139,10 +139,10 @@
             }],
             animationEasing: 'elasticOut',
             animationEasingUpdate: 'elasticOut',
-            animationDelay(idx) {
+            animationDelay (idx) {
               return idx * 20
             },
-            animationDelayUpdate(idx) {
+            animationDelayUpdate (idx) {
               return idx * 20
             }
           })

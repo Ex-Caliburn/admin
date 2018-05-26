@@ -41,7 +41,7 @@
       prePictureList: {
         type: Array,
         required: true,
-        default() {
+        default () {
           return []
         }
       },
@@ -54,8 +54,9 @@
         default: 150
       }
     },
-    data() {
+    data () {
       return {
+        domain: '',
         currentIndex: null,
         preview: false,
         scale: 0.2,
@@ -67,29 +68,29 @@
       }
     },
     watch: {
-      preview(val) {
+      preview (val) {
         document.getElementsByTagName('body')[0].style.overflow = val ? 'hidden' : 'auto'
       },
-      sIndex(s) {
+      sIndex (s) {
         this.scaleTxt = 100 + (s * 20)
       }
     },
     methods: {
-      preImg(pictureIndex) {
+      preImg (pictureIndex) {
         this.currentIndex = pictureIndex
         this.preview = true
       },
-      hidePreview() {
+      hidePreview () {
         this.preview = false
       },
-      clearStyle() {
+      clearStyle () {
         this.$refs.img.style.width = ''
         this.$refs.img.style.transform = ''
         this.rIndex = 0
         this.sIndex = 0
         this.imgW = 0
       },
-      zoomStyle(i) {
+      zoomStyle (i) {
         if ((i > 0 && this.sIndex) > 4 || (i < 0 && this.sIndex <= -4)) {
           return
         }
@@ -99,10 +100,10 @@
         }
         this.$refs.img.style.width = this.imgW * (1 + (this.scale * this.sIndex)) + 'px'
       },
-      rotateStyle() {
+      rotateStyle () {
         this.$refs.img.style.transform = 'rotate(' + this.rIndex * this.rotate + 'deg)'
       },
-      updatePreview(s) {
+      updatePreview (s) {
         switch (s) {
           case '+':
             this.currentIndex++

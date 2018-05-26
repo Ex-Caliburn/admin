@@ -55,7 +55,7 @@
       CountTo
     },
     methods: {
-      handleSetLineChartData(type) {
+      handleSetLineChartData (type) {
         this.$emit('handleSetLineChartData', type)
       }
     }

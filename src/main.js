@@ -28,6 +28,14 @@ Object.keys(filters).forEach(key => {
 
 Vue.config.productionTip = false
 
+Vue.mixin({
+  methods: {
+    routePush (name, query, params) {
+      this.$router.push({ name, query, params })
+    }
+  }
+})
+
 new Vue({
   el: '#app',
   router,

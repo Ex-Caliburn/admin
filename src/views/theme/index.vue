@@ -55,12 +55,12 @@
 </template>
 
 <script>
-  import {toggleClass} from '@/utils'
+  import { toggleClass } from '@/utils'
   import '@/assets/custom-theme/index.css' // the theme changed version element-ui css
 
   export default {
     name: 'theme',
-    data() {
+    data () {
       return {
         theme: false,
         tags: [
@@ -75,7 +75,7 @@
       }
     },
     watch: {
-      theme() {
+      theme () {
         toggleClass(document.body, 'custom-theme')
       }
     }

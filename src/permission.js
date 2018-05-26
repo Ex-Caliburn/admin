@@ -1,14 +1,14 @@
 import router from './router'
 import store from './store'
-import {Message} from 'element-ui'
+import { Message } from 'element-ui'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
-import {getToken} from '@/utils/auth' // getToken from cookie
+import { getToken } from '@/utils/auth' // getToken from cookie
 
 NProgress.configure({ showSpinner: false })// NProgress Configuration
 
 // permissiom judge function
-function hasPermission(roles, permissionRoles) {
+function hasPermission (roles, permissionRoles) {
   if (roles.indexOf('admin') >= 0) return true // admin permission passed directly
   if (!permissionRoles) return true
   return roles.some(role => permissionRoles.indexOf(role) >= 0)
@@ -42,7 +42,7 @@ router.beforeEach((to, from, next) => {
         if (hasPermission(store.getters.roles, to.meta.roles)) {
           next()//
         } else {
-          next({ path: '/401', replace: true, query: { noGoBack: true } })
+          next({ path: '/401', replace: true, query: { noGoBack: true }})
         }
         // 可删 ↑
       }

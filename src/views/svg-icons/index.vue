@@ -26,22 +26,22 @@
 
   export default {
     name: 'icons',
-    data() {
+    data () {
       return {
         iconsMap: []
       }
     },
-    mounted() {
+    mounted () {
       const iconsMap = icons.state.iconsMap.map((i) => {
         return i.default.id.split('-')[1]
       })
       this.iconsMap = iconsMap
     },
     methods: {
-      generateIconCode(symbol) {
+      generateIconCode (symbol) {
         return `<svg-icon icon-class="${symbol}" />`
       },
-      handleClipboard(text, event) {
+      handleClipboard (text, event) {
         clipboard(text, event)
       }
     }

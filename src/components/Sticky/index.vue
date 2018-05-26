@@ -25,7 +25,7 @@
         type: String
       }
     },
-    data() {
+    data () {
       return {
         active: false,
         position: '',
@@ -36,18 +36,18 @@
         stickyHeight: 0
       }
     },
-    mounted() {
+    mounted () {
       this.height = this.$el.getBoundingClientRect().height
       window.addEventListener('scroll', this.handleScroll)
     },
-    activated() {
+    activated () {
       this.handleScroll()
     },
-    destroyed() {
+    destroyed () {
       window.removeEventListener('scroll', this.handleScroll)
     },
     methods: {
-      sticky() {
+      sticky () {
         if (this.active) {
           return
         }
@@ -55,7 +55,7 @@
         this.active = true
         this.width = this.width + 'px'
       },
-      reset() {
+      reset () {
         if (!this.active) {
           return
         }
@@ -63,7 +63,7 @@
         this.width = 'auto'
         this.active = false
       },
-      handleScroll() {
+      handleScroll () {
         this.width = this.$el.getBoundingClientRect().width
         const offsetTop = this.$el.getBoundingClientRect().top
         if (offsetTop <= this.stickyTop) {

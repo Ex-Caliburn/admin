@@ -76,7 +76,7 @@
         record._expanded = !record._expanded
       },
       // 图标显示
-      iconShow(index, record) {
+      iconShow (index, record) {
         return (index === 0 && record.children && record.children.length > 0)
       }
     }

@@ -2,7 +2,7 @@
  * 分页抽离出公共方法
  * */
 export default {
-  data() {
+  data () {
     return {
       page: {
         pageSizes: [10, 20, 50],
@@ -13,12 +13,12 @@ export default {
     }
   },
   methods: {
-    handleSizeChange(val) {
+    handleSizeChange (val) {
       this.page.pageLimit = val
       this.page.currentPage = 1
       this.jumpPage()
     },
-    handleCurrentChange(val) {
+    handleCurrentChange (val) {
       this.page.currentPage = val
       this.jumpPage(val)
     }

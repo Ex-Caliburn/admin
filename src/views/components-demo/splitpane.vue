@@ -30,7 +30,7 @@
     name: 'splitpane-demo',
     components: { splitPane },
     methods: {
-      resize() {
+      resize () {
         console.log('resize')
       }
     }

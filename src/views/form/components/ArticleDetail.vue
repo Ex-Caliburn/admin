@@ -131,9 +131,9 @@
   import Multiselect from 'vue-multiselect' // 使用的一个多选框组件，element-ui的select不能满足所有需求
   import 'vue-multiselect/dist/vue-multiselect.min.css' // 多选框组件css
   import Sticky from '@/components/Sticky' // 粘性header组件
-  import {validateURL} from '@/utils/validate'
-  import {fetchArticle} from '@/api/article'
-  import {userSearch} from '@/api/remoteSearch'
+  import { validateURL } from '@/utils/validate'
+  import { fetchArticle } from '@/api/article'
+  import { userSearch } from '@/api/remoteSearch'
 
   const defaultForm = {
     status: 'draft',
@@ -158,7 +158,7 @@
         default: false
       }
     },
-    data() {
+    data () {
       const validateRequire = (rule, value, callback) => {
         if (value === '') {
           this.$message({
@@ -204,11 +204,11 @@
       }
     },
     computed: {
-      contentShortLength() {
+      contentShortLength () {
         return this.postForm.content_short.length
       }
     },
-    created() {
+    created () {
       if (this.isEdit) {
         this.fetchData()
       } else {
@@ -216,7 +216,7 @@
       }
     },
     methods: {
-      fetchData() {
+      fetchData () {
         fetchArticle().then(response => {
           this.postForm = response.data
         }).catch(err => {
@@ -224,7 +224,7 @@
           console.log(err)
         })
       },
-      submitForm() {
+      submitForm () {
         this.postForm.display_time = parseInt(this.display_time / 1000)
         console.log(this.postForm)
         this.$refs.postForm.validate(valid => {
@@ -244,7 +244,7 @@
           }
         })
       },
-      draftForm() {
+      draftForm () {
         if (this.postForm.content.length === 0 || this.postForm.title.length === 0) {
           this.$message({
             message: '请填写必要的标题和内容',
@@ -260,7 +260,7 @@
         })
         this.postForm.status = 'draft'
       },
-      getRemoteUserList(query) {
+      getRemoteUserList (query) {
         userSearch(query).then(response => {
           if (!response.data.items) return
           console.log(response)

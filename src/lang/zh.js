@@ -1,5 +1,7 @@
 export default {
   route: {
+    feedback: '反馈',
+    question: '问答',
     dashboard: '首页',
     audit: '审核',
     introduction: '简述',

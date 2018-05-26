@@ -76,7 +76,7 @@
       }
     },
     computed: {
-      computedClasses() {
+      computedClasses () {
         return {
           'material--active': this.focus,
           'material--disabled': this.disabled,
@@ -85,11 +85,11 @@
       }
     },
     watch: {
-      value(newValue) {
+      value (newValue) {
         this.currentValue = newValue
       }
     },
-    data() {
+    data () {
       return {
         currentValue: this.value,
         focus: false,
@@ -97,7 +97,7 @@
       }
     },
     methods: {
-      handleModelInput(event) {
+      handleModelInput (event) {
         const value = event.target.value
         this.$emit('input', value)
         if (this.$parent.$options.componentName === 'ElFormItem') {
@@ -107,14 +107,14 @@
         }
         this.$emit('change', value)
       },
-      handleMdFocus(event) {
+      handleMdFocus (event) {
         this.focus = true
         this.$emit('focus', event)
         if (this.placeholder && this.placeholder !== '') {
           this.fillPlaceHolder = this.placeholder
         }
       },
-      handleMdBlur(event) {
+      handleMdBlur (event) {
         this.focus = false
         this.$emit('blur', event)
         this.fillPlaceHolder = null

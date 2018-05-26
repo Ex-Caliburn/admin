@@ -27,7 +27,7 @@
         default: '#1890ff'
       }
     },
-    data() {
+    data () {
       return {
         dialogVisible: false,
         listObj: {},
@@ -35,10 +35,10 @@
       }
     },
     methods: {
-      checkAllSuccess() {
+      checkAllSuccess () {
         return Object.keys(this.listObj).every(item => this.listObj[item].hasSuccess)
       },
-      handleSubmit() {
+      handleSubmit () {
         const arr = Object.keys(this.listObj).map(v => this.listObj[v])
         if (!this.checkAllSuccess()) {
           this.$message('请等待所有图片上传成功 或 出现了网络问题，请刷新页面重新上传！')
@@ -50,7 +50,7 @@
         this.fileList = []
         this.dialogVisible = false
       },
-      handleSuccess(response, file) {
+      handleSuccess (response, file) {
         const uid = file.uid
         const objKeyArr = Object.keys(this.listObj)
         for (let i = 0, len = objKeyArr.length; i < len; i++) {
@@ -61,7 +61,7 @@
           }
         }
       },
-      handleRemove(file) {
+      handleRemove (file) {
         const uid = file.uid
         const objKeyArr = Object.keys(this.listObj)
         for (let i = 0, len = objKeyArr.length; i < len; i++) {
@@ -71,7 +71,7 @@
           }
         }
       },
-      beforeUpload(file) {
+      beforeUpload (file) {
         const _self = this
         const _URL = window.URL || window.webkitURL
         const fileName = file.uid

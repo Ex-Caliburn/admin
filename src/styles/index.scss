@@ -96,6 +96,43 @@ div:focus {
   }
 }
 
+.flex {
+  display: flex;
+}
+.flex1 {
+  flex: 1;
+}
+
+/*决定主轴的方向*/
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  /*nowrap（默认）：不换行。*/
+  flex-wrap: wrap;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.flex-around {
+  justify-content: space-around;
+}
+
+.flex-align-center {
+  align-items: center;
+}
+
+.flex-align-stretch {
+  align-items: stretch;
+}
+
 code {
   background: #eef1f6;
   padding: 15px 16px;
@@ -190,4 +227,60 @@ code {
 
 .multiselect--active {
   z-index: 1000 !important;
+}
+
+.MR10 {
+  margin-right: 10px;
+}
+
+.ML10 {
+  margin-left: 10px;
+}
+
+.MT10 {
+  margin-top: 10px;
+}
+
+.MB10 {
+  margin-bottom: 10px;
+}
+
+.MR20 {
+  margin-right: 20px;
+}
+
+.ML20 {
+  margin-left: 20px;
+}
+
+.MT20 {
+  margin-top: 20px;
+}
+
+.MB20 {
+  margin-bottom: 20px;
+}
+
+.MR30 {
+  margin-right: 30px;
+}
+
+.ML30 {
+  margin-left: 30px;
+}
+
+.ML40 {
+  margin-left: 30px;
+}
+.white{
+  color: #fff;
+}
+.green{
+  color: #22dd82;
+}
+.blue{
+  color: #459AE9;
+}
+.grey{
+  color: grey;
 }

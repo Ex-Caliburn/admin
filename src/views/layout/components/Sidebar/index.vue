@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
+  import { mapGetters } from 'vuex'
   import SidebarItem from './SidebarItem'
 
   export default {
@@ -25,7 +25,7 @@
         'permission_routers',
         'sidebar'
       ]),
-      isCollapse() {
+      isCollapse () {
         return !this.sidebar.opened
       }
     }

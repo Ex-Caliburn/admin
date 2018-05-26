@@ -82,13 +82,13 @@
       TodoList,
       BoxCard
     },
-    data() {
+    data () {
       return {
         lineChartData: lineChartData.newVisitis
       }
     },
     methods: {
-      handleSetLineChartData(type) {
+      handleSetLineChartData (type) {
         this.lineChartData = lineChartData[type]
       }
     }

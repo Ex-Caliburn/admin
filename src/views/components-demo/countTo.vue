@@ -44,7 +44,7 @@
   export default {
     name: 'countTo-demo',
     components: { countTo },
-    data() {
+    data () {
       return {
         setStartVal: 0,
         setEndVal: 2017,
@@ -56,28 +56,28 @@
       }
     },
     computed: {
-      _startVal() {
+      _startVal () {
         if (this.setStartVal) {
           return this.setStartVal
         } else {
           return 0
         }
       },
-      _endVal() {
+      _endVal () {
         if (this.setEndVal) {
           return this.setEndVal
         } else {
           return 0
         }
       },
-      _duration() {
+      _duration () {
         if (this.setDuration) {
           return this.setDuration
         } else {
           return 100
         }
       },
-      _decimals() {
+      _decimals () {
         if (this.setDecimals) {
           if (this.setDecimals < 0 || this.setDecimals > 20) {
             alert('digits argument must be between 0 and 20')
@@ -88,21 +88,21 @@
           return 0
         }
       },
-      _separator() {
+      _separator () {
         return this.setSeparator
       },
-      _suffix() {
+      _suffix () {
         return this.setSuffix
       },
-      _prefix() {
+      _prefix () {
         return this.setPrefix
       }
     },
     methods: {
-      start() {
+      start () {
         this.$refs.example.start()
       },
-      pauseResume() {
+      pauseResume () {
         this.$refs.example.pauseResume()
       }
     }

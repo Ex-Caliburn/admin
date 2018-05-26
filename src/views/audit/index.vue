@@ -1,5 +1,6 @@
 <template>
   <div class="app-container">
+
     <el-table
       :data="tableData5"
       style="width: 100%">
@@ -25,10 +26,9 @@
               <span>{{ props.row.desc }}</span>
             </el-form-item>
             <el-form-item label="录取证明图片">
-              <template slot-scope="scope">
-                <image-previewer :prePictureList="scope.row.educationPicture">
-                </image-previewer>
-              </template>
+              <!--<img src="https://crm-test.jingdaka.com/pic/1527047890608_23aedf045bc244caa2130f0416e605c7.jpg" alt="">-->
+              <image-previewer :prePictureList="props.row.educationPicture">
+              </image-previewer>
             </el-form-item>
             <el-form-item label="推荐人">
               <span>{{ props.row.desc }}</span>
@@ -45,6 +45,14 @@
         prop="phoneNumber">
       </el-table-column>
       <el-table-column
+        label="本科学校"
+        prop="undergraduateSchoolId">
+      </el-table-column>
+      <el-table-column
+        label="研究生学校"
+        prop="undergraduateSchoolId">
+      </el-table-column>
+      <el-table-column
         label="硕士阶段学号"
         prop="postgraduateNumber">
       </el-table-column>
@@ -56,7 +64,9 @@
         fixed="right"
         prop="desc" label="操作" min-width="200">
         <template slot-scope="scope">
-          <el-button type="primary" size="medium" class="blue cur-pointer" @click="audit(scope.row.userId)">通过审核
+          <el-button type="primary" size="medium" class="cur-pointer" @click="goDetail(scope.row.userId)">详情
+          </el-button>
+          <el-button type="primary" size="medium" class="cur-pointer" @click="audit(scope.row.userId)">通过审核
           </el-button>
         </template>
       </el-table-column>
@@ -185,7 +195,7 @@
           publicSubjectFirst: '1,2', // 初试公共科目
           professionalSubjectFirst: '初试专业科目', // 初试专业科目，逗号分割
           answerWill: '1, 2', //  回答意愿   1:13大学科 2：公共科目类 3：复试科目类问题咨询 4：考研四大选择题与考研规划问题 5 院校及专业咨询
-          educationPicture: ['https://crm-test.jingdaka.com/pic/1527047890608_23aedf045bc244caa2130f0416e605c7.jpg', 'https://crm-test.jingdaka.com/pic/1527047890608_23aedf045bc244caa2130f0416e605c7.jpg'],
+          educationPicture: ['https://crm-test.jingdaka.com/pic/1527047890608_23aedf045bc244caa2130f0416e605c7.jpg', 'https://crm-test.jingdaka.com/pic/1527047890608_23aedf045bc244caa2130f0416e605c7.jpg']
         }
         temp.id = i
         a.push(temp)
@@ -201,13 +211,16 @@
       }
     },
     methods: {
-      init (event) {
+      init () {
       },
-      audit (event) {
+      audit () {
       },
-      getList (event) {
+      goDetail (id) {
+        this.routePush('pSDetail', { id: id })
       },
-      jumpPage (event) {
+      getList () {
+      },
+      jumpPage () {
       }
     }
   }

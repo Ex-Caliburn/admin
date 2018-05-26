@@ -45,26 +45,26 @@
         default: 'fade'
       }
     },
-    data() {
+    data () {
       return {
         visible: false,
         interval: null
       }
     },
-    mounted() {
+    mounted () {
       window.addEventListener('scroll', this.handleScroll)
     },
-    beforeDestroy() {
+    beforeDestroy () {
       window.removeEventListener('scroll', this.handleScroll)
       if (this.interval) {
         clearInterval(this.interval)
       }
     },
     methods: {
-      handleScroll() {
+      handleScroll () {
         this.visible = window.pageYOffset > this.visibilityHeight
       },
-      backToTop() {
+      backToTop () {
         const start = window.pageYOffset
         let i = 0
         this.interval = setInterval(() => {
@@ -78,7 +78,7 @@
           i++
         }, 16.7)
       },
-      easeInOutQuad(t, b, c, d) {
+      easeInOutQuad (t, b, c, d) {
         if ((t /= d / 2) < 1) return c / 2 * t * t + b
         return -c / 2 * (--t * (t - 2) - 1) + b
       }

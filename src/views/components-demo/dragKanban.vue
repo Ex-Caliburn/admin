@@ -13,7 +13,7 @@
     components: {
       Kanban
     },
-    data() {
+    data () {
       return {
         options: {
           group: 'mission'

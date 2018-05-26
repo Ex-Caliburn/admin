@@ -38,13 +38,13 @@
         default: '#48576a'
       }
     },
-    data() {
+    data () {
       return {
         isFullscreen: false
       }
     },
     methods: {
-      click() {
+      click () {
         if (!screenfull.enabled) {
           this.$message({
             message: 'you browser can not work',

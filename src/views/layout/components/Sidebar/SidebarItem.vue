@@ -36,7 +36,7 @@
 </template>
 
 <script>
-  import {generateTitle} from '@/utils/i18n'
+  import { generateTitle } from '@/utils/i18n'
 
   export default {
     name: 'SidebarItem',
@@ -50,7 +50,7 @@
       }
     },
     methods: {
-      hasOneShowingChildren(children) {
+      hasOneShowingChildren (children) {
         const showingChildren = children.filter(item => {
           return !item.hidden
         })

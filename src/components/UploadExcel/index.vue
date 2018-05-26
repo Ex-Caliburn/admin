@@ -13,7 +13,7 @@
   import XLSX from 'xlsx'
 
   export default {
-    data() {
+    data () {
       return {
         loading: false,
         excelData: {
@@ -23,12 +23,12 @@
       }
     },
     methods: {
-      generateDate({ header, results }) {
+      generateDate ({ header, results }) {
         this.excelData.header = header
         this.excelData.results = results
         this.$emit('on-selected-file', this.excelData)
       },
-      handleDrop(e) {
+      handleDrop (e) {
         e.stopPropagation()
         e.preventDefault()
         const files = e.dataTransfer.files
@@ -41,22 +41,22 @@
         e.stopPropagation()
         e.preventDefault()
       },
-      handleDragover(e) {
+      handleDragover (e) {
         e.stopPropagation()
         e.preventDefault()
         e.dataTransfer.dropEffect = 'copy'
       },
-      handleUpload() {
+      handleUpload () {
         document.getElementById('excel-upload-input').click()
       },
-      handkeFileChange(e) {
+      handkeFileChange (e) {
         const files = e.target.files
         const itemFile = files[0] // only use files[0]
         if (!itemFile) return
         this.readerData(itemFile)
         this.$refs['excel-upload-input'].value = null // fix can't select the same excel
       },
-      readerData(itemFile) {
+      readerData (itemFile) {
         const reader = new FileReader()
         reader.onload = e => {
           const data = e.target.result
@@ -70,7 +70,7 @@
         }
         reader.readAsArrayBuffer(itemFile)
       },
-      fixdata(data) {
+      fixdata (data) {
         let o = ''
         let l = 0
         const w = 10240
@@ -78,7 +78,7 @@
         o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w)))
         return o
       },
-      get_header_row(sheet) {
+      get_header_row (sheet) {
         const headers = []
         const range = XLSX.utils.decode_range(sheet['!ref'])
         let C

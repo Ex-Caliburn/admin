@@ -193,7 +193,7 @@
         'default': false
       }
     },
-    data() {
+    data () {
       const that = this
       const {
         imgFormat,
@@ -282,7 +282,7 @@
     },
     computed: {
       // 进度条样式
-      progressStyle() {
+      progressStyle () {
         const {
           progress
         } = this
@@ -291,7 +291,7 @@
         }
       },
       // 原图样式
-      sourceImgStyle() {
+      sourceImgStyle () {
         const {
           scale,
           sourceImgMasking
@@ -311,7 +311,7 @@
         }
       },
       // 原图蒙版属性
-      sourceImgMasking() {
+      sourceImgMasking () {
         const {
           width,
           height,
@@ -344,7 +344,7 @@
         }
       },
       // 原图遮罩样式
-      sourceImgShadeStyle() {
+      sourceImgShadeStyle () {
         const {
           sourceImgMasking,
           sourceImgContainer
@@ -358,7 +358,7 @@
           height: h + 'px'
         }
       },
-      previewStyle() {
+      previewStyle () {
         const {
           width,
           height,
@@ -382,7 +382,7 @@
       }
     },
     watch: {
-      value(newValue) {
+      value (newValue) {
         if (newValue && this.loading != 1) {
           this.reset()
         }
@@ -390,11 +390,11 @@
     },
     methods: {
       // 点击波纹效果
-      ripple(e) {
+      ripple (e) {
         effectRipple(e)
       },
       // 关闭控件
-      off() {
+      off () {
         setTimeout(() => {
           this.$emit('input', false)
           this.$emit('close')
@@ -404,7 +404,7 @@
         }, 200)
       },
       // 设置步骤
-      setStep(no) {
+      setStep (no) {
         // 延时是为了显示动画效果呢，哈哈哈
         setTimeout(() => {
           this.step = no
@@ -412,11 +412,11 @@
       },
       /* 图片选择区域函数绑定
        ---------------------------------------------------------------*/
-      preventDefault(e) {
+      preventDefault (e) {
         e.preventDefault()
         return false
       },
-      handleClick(e) {
+      handleClick (e) {
         if (this.loading !== 1) {
           if (e.target !== this.$refs.fileinput) {
             e.preventDefault()
@@ -426,7 +426,7 @@
           }
         }
       },
-      handleChange(e) {
+      handleChange (e) {
         e.preventDefault()
         if (this.loading !== 1) {
           const files = e.target.files || e.dataTransfer.files
@@ -438,7 +438,7 @@
       },
       /* ---------------------------------------------------------------*/
       // 检测选择的文件是否合适
-      checkFile(file) {
+      checkFile (file) {
         let that = this,
           {
             lang,
@@ -459,7 +459,7 @@
         return true
       },
       // 重置控件
-      reset() {
+      reset () {
         const that = this
         that.loading = 0
         that.hasError = false
@@ -467,7 +467,7 @@
         that.progress = 0
       },
       // 设置图片源
-      setSourceImg(file) {
+      setSourceImg (file) {
         let that = this,
           fr = new FileReader()
         fr.onload = function (e) {
@@ -477,7 +477,7 @@
         fr.readAsDataURL(file)
       },
       // 剪裁前准备工作
-      startCrop() {
+      startCrop () {
         let that = this,
           {
             width,
@@ -531,7 +531,7 @@
         }
       },
       // 鼠标按下图片准备移动
-      imgStartMove(e) {
+      imgStartMove (e) {
         e.preventDefault()
         // 支持触摸事件，则鼠标事件无效
         if (this.isSupportTouch && !e.targetTouches) {
@@ -550,7 +550,7 @@
         simd.on = true
       },
       // 鼠标按下状态下移动，图片移动
-      imgMove(e) {
+      imgMove (e) {
         e.preventDefault()
         // 支持触摸事件，则鼠标事件无效
         if (this.isSupportTouch && !e.targetTouches) {
@@ -592,14 +592,14 @@
         scale.y = rY
       },
       // 按钮按下开始向右旋转
-      startRotateRight(e) {
+      startRotateRight (e) {
         let that = this,
           {
             scale
           } = that
         scale.rotateRight = true
 
-        function rotate() {
+        function rotate () {
           if (scale.rotateRight) {
             const degree = ++scale.degree
             that.createImg(degree)
@@ -612,14 +612,14 @@
         rotate()
       },
       // 按钮按下开始向右旋转
-      startRotateLeft(e) {
+      startRotateLeft (e) {
         let that = this,
           {
             scale
           } = that
         scale.rotateLeft = true
 
-        function rotate() {
+        function rotate () {
           if (scale.rotateLeft) {
             const degree = --scale.degree
             that.createImg(degree)
@@ -632,7 +632,7 @@
         rotate()
       },
       // 停止旋转
-      endRotate() {
+      endRotate () {
         const {
           scale
         } = this
@@ -640,14 +640,14 @@
         scale.rotateRight = false
       },
       // 按钮按下开始放大
-      startZoomAdd(e) {
+      startZoomAdd (e) {
         let that = this,
           {
             scale
           } = that
         scale.zoomAddOn = true
 
-        function zoom() {
+        function zoom () {
           if (scale.zoomAddOn) {
             const range = scale.range >= 100 ? 100 : ++scale.range
             that.zoomImg(range)
@@ -660,18 +660,18 @@
         zoom()
       },
       // 按钮松开或移开取消放大
-      endZoomAdd(e) {
+      endZoomAdd (e) {
         this.scale.zoomAddOn = false
       },
       // 按钮按下开始缩小
-      startZoomSub(e) {
+      startZoomSub (e) {
         let that = this,
           {
             scale
           } = that
         scale.zoomSubOn = true
 
-        function zoom() {
+        function zoom () {
           if (scale.zoomSubOn) {
             const range = scale.range <= 0 ? 0 : --scale.range
             that.zoomImg(range)
@@ -684,17 +684,17 @@
         zoom()
       },
       // 按钮松开或移开取消缩小
-      endZoomSub(e) {
+      endZoomSub (e) {
         const {
           scale
         } = this
         scale.zoomSubOn = false
       },
-      zoomChange(e) {
+      zoomChange (e) {
         this.zoomImg(e.target.value)
       },
       // 缩放原图
-      zoomImg(newRange) {
+      zoomImg (newRange) {
         const that = this
         const {
           sourceImgMasking,
@@ -748,7 +748,7 @@
         }, 300)
       },
       // 生成需求图片
-      createImg(e) {
+      createImg (e) {
         let that = this,
           {
             mime,
@@ -782,7 +782,7 @@
         ctx.drawImage(sourceImg, x / scale, y / scale, width / scale, height / scale)
         that.createImgUrl = canvas.toDataURL(mime)
       },
-      prepareUpload() {
+      prepareUpload () {
         const {
           url,
           createImgUrl,
@@ -797,7 +797,7 @@
         }
       },
       // 上传图片
-      upload() {
+      upload () {
         let that = this,
           {
             lang,
@@ -846,7 +846,7 @@
         })
       }
     },
-    created() {
+    created () {
       // 绑定按键esc隐藏此插件事件
       document.addEventListener('keyup', (e) => {
         if (this.value && (e.key == 'Escape' || e.keyCode == 27)) {

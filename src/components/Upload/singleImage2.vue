@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import {getToken} from '@/api/qiniu'
+  import { getToken } from '@/api/qiniu'
 
   export default {
     name: 'singleImageUpload2',
@@ -26,27 +26,27 @@
       value: String
     },
     computed: {
-      imageUrl() {
+      imageUrl () {
         return this.value
       }
     },
-    data() {
+    data () {
       return {
         tempUrl: '',
         dataObj: { token: '', key: '' }
       }
     },
     methods: {
-      rmImage() {
+      rmImage () {
         this.emitInput('')
       },
-      emitInput(val) {
+      emitInput (val) {
         this.$emit('input', val)
       },
-      handleImageScucess() {
+      handleImageScucess () {
         this.emitInput(this.tempUrl)
       },
-      beforeUpload() {
+      beforeUpload () {
         const _self = this
         return new Promise((resolve, reject) => {
           getToken().then(response => {

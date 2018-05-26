@@ -28,13 +28,13 @@
       },
       options: {
         type: Object,
-        default() {
+        default () {
           return {}
         }
       },
       list: {
         type: Array,
-        default() {
+        default () {
           return []
         }
       }

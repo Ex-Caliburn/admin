@@ -3,7 +3,6 @@ import Router from 'vue-router'
 /* Layout */
 import Layout from '../views/layout/Layout'
 
-
 const _import = require('./_import_' + process.env.NODE_ENV)
 // in development-env not use lazy-loading, because lazy-loading too many pages will cause webpack hot update too slow. so only in production use lazy-loading;
 // detail: https://panjiachen.github.io/vue-element-admin-site/#/lazy-loading
@@ -59,11 +58,50 @@ export const constantRouterMap = [
     path: '/audit',
     component: Layout,
     redirect: '/audit/index',
+    meta: {
+      title: 'audit',
+      icon: 'chart'
+    },
     children: [{
       path: 'index',
       component: _import('audit/index'),
       name: 'audit',
       meta: { title: 'audit', icon: 'table', noCache: true }
+    }, {
+      path: 'pSDetail',
+      component: _import('audit/pSDetail'),
+      name: 'pSDetail',
+      meta: { title: 'pSDetail', icon: 'table', noCache: true }
+    }]
+  },
+  {
+    path: '/question',
+    component: Layout,
+    redirect: '/question/index',
+    meta: {
+      title: 'audit',
+      icon: 'chart'
+    },
+    children: [{
+      path: 'question',
+      component: _import('question/index'),
+      name: 'question',
+      meta: { title: 'question', icon: 'table', noCache: true }
+    }]
+  },
+  {
+    path: '/feedback',
+    component: Layout,
+    redirect: '/feedback/index',
+    meta: {
+      title: 'audit',
+      icon: 'chart'
+    },
+    children: [{
+      path: 'feedback',
+      component: _import('feedback/index'),
+      name: 'feedback',
+      meta: { title: 'feedback', icon: 'table', noCache: true }
     }]
   },
   {
@@ -79,7 +117,7 @@ export const constantRouterMap = [
 ]
 
 export default new Router({
-  // mode: 'history', // require service support
+  mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
 })

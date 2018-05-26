@@ -26,15 +26,15 @@
         default: '200px'
       }
     },
-    data() {
+    data () {
       return {
         chart: null
       }
     },
-    mounted() {
+    mounted () {
       this.initChart()
     },
-    beforeDestroy() {
+    beforeDestroy () {
       if (!this.chart) {
         return
       }
@@ -42,7 +42,7 @@
       this.chart = null
     },
     methods: {
-      initChart() {
+      initChart () {
         this.chart = echarts.init(document.getElementById(this.id))
         const xData = (function () {
           const data = []
@@ -175,7 +175,7 @@
                     color: '#fff'
                   },
                   position: 'insideTop',
-                  formatter(p) {
+                  formatter (p) {
                     return p.value > 0 ? p.value : ''
                   }
                 }
@@ -208,7 +208,7 @@
                   label: {
                     show: true,
                     position: 'top',
-                    formatter(p) {
+                    formatter (p) {
                       return p.value > 0 ? p.value : ''
                     }
                   }
@@ -241,7 +241,7 @@
                   label: {
                     show: true,
                     position: 'top',
-                    formatter(p) {
+                    formatter (p) {
                       return p.value > 0 ? p.value : ''
                     }
                   }

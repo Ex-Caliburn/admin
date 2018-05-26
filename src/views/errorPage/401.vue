@@ -31,7 +31,7 @@
 
   export default {
     name: 'page401',
-    data() {
+    data () {
       return {
         errGif: errGif + '?' + +new Date(),
         ewizardClap: 'https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646',
@@ -39,7 +39,7 @@
       }
     },
     methods: {
-      back() {
+      back () {
         if (this.$route.query.noGoBack) {
           this.$router.push({ path: '/dashboard' })
         } else {

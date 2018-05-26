@@ -17,21 +17,21 @@
 
   export default {
     name: 'jsonEditor',
-    data() {
+    data () {
       return {
         jsonEditor: false
       }
     },
     props: ['value'],
     watch: {
-      value(value) {
+      value (value) {
         const editor_value = this.jsonEditor.getValue()
         if (value !== editor_value) {
           this.jsonEditor.setValue(JSON.stringify(this.value, null, 2))
         }
       }
     },
-    mounted() {
+    mounted () {
       this.jsonEditor = CodeMirror.fromTextArea(this.$refs.textarea, {
         lineNumbers: true,
         mode: 'application/json',
@@ -47,7 +47,7 @@
       })
     },
     methods: {
-      getValue() {
+      getValue () {
         return this.jsonEditor.getValue()
       }
     }
@@ -60,16 +60,16 @@
     position: relative;
   }
 
-  .json-editor >>> .CodeMirror {
+  .json-editor > > > .CodeMirror {
     height: auto;
     min-height: 300px;
   }
 
-  .json-editor >>> .CodeMirror-scroll {
+  .json-editor > > > .CodeMirror-scroll {
     min-height: 300px;
   }
 
-  .json-editor >>> .cm-s-rubyblue span.cm-string {
+  .json-editor > > > .cm-s-rubyblue span.cm-string {
     color: #F08047;
   }
 </style>
