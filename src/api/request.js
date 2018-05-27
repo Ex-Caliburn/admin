@@ -1,18 +1,21 @@
-import Api from '@/js/api'
+import Api from '@/api/api'
 import Router from '@/router/'
 import Axios from 'axios'
 import { Message } from 'element-ui'
 
 const baseRequest = Axios.create({})
 baseRequest.defaults.withCredentials = true
+// baseRequest.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
 // 对所有的数据响应检查是否登录
 baseRequest.interceptors.response.use(function (res) {
-  if (res.data.code === 0) {
-    return Promise.resolve(res.data.data)
-  } else {
-    return Promise.reject(res.data.msg)
-  }
+  console.log(res)
+  return Promise.resolve(res.data.msg)
+  // if (res.data.code === 0) {
+  //   return Promise.resolve(res.data.msg)
+  // } else {
+  //   return Promise.reject(res.data.msg)
+  // }
 }, function (error) {
   console.log(error)
   if (!error.response) {
@@ -34,7 +37,10 @@ class Request {
   }
 
   post (name, data) {
-    return baseRequest.post(Api.getApi(name), data)
+    return baseRequest.post(Api.getApi(name), data, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }})
       .then(function (res) {
         return Promise.resolve(res)
       })
