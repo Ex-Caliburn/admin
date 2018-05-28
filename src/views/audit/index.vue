@@ -215,15 +215,15 @@
     },
     methods: {
       init () {
-        // request.get('getPostgraduateInfoList', {
-        //   pageSize: 10,
-        //   pageNum: 1
-        // })
-        //   .then(res => {
-        //     console.log(res)
-        //   }).catch(err => {
-        //     console.log(err)
-        //   })
+        request.get('getPostgraduateInfoList', {
+          pageSize: 10,
+          pageNum: 1
+        })
+          .then(res => {
+            console.log(res)
+          }).catch(err => {
+            console.log(err)
+          })
       },
       audit () {
       },

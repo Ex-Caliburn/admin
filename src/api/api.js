@@ -3,6 +3,7 @@
  * post请求一律动作行为单词开头
  */
 const base = '/api/kylsServer/'
+// const base = 'https://kyls.csytgj.com/'
 
 // 请求方式：post
 //

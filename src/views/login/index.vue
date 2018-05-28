@@ -101,7 +101,7 @@
                 this.loading = false
                 console.log(res)
                 this.$store.commit('login', res)
-                // this.routePush('audit')
+                this.routePush('audit')
               }).catch(err => {
                 console.log(err)
               })

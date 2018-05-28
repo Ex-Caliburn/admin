@@ -117,6 +117,7 @@ export const constantRouterMap = [
 ]
 
 export default new Router({
+  // base: '/kylsServer/',
   mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
