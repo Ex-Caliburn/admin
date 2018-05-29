@@ -27,6 +27,8 @@ module.exports = {
   'rules': {
     // allow paren-less arrow functions
     'arrow-parens': 0,
+    'no-unused-vars': "ignore",
+    'no-console ': "ignore",
     // allow async-await
     'generator-star-spacing': 0,
     // 命名的函数忽略括号前的空格检测
