@@ -161,8 +161,8 @@
     }
   ]
 
+  import request from '@/api/request'
   import ImagePreviewer from '@/components/ImagePreviewer'
-  // import request from '@/js/request'
   import pagination from '@/mixins/pagination'
   // import { mapGetters } from 'vuex'
   // import permission from 'mixins/permission'
@@ -210,17 +210,28 @@
         tableData5: a
       }
     },
+    mounted () {
+      this.init()
+    },
     methods: {
       init () {
+        request.get('getPostgraduateInfoList', {
+          pageSize: 10,
+          pageNum: 1
+        })
+          .then(res => {
+            console.log(res)
+          }).catch(err => {
+            console.log(err)
+          })
       },
       audit () {
       },
       goDetail (id) {
         this.routePush('pSDetail', { id: id })
       },
-      getList () {
-      },
       jumpPage () {
+        this.init()
       }
     }
   }
