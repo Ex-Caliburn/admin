@@ -172,9 +172,9 @@
           postgraduateNumber: '2',
           degreeNature: 1, //  学位性质 1学术型、2专业型
           studyMode: 1, // 就读学习方式 1:全日制、2:非全日制
-          grade: 1, // 年级 1.准研究生、2.研一、3.研二、4.研三
-          publicSubjectFirst: '1,2', // 初试公共科目
-          professionalSubjectFirst: '初试专业科目', // 初试专业科目，逗号分割
+          // grade: 1, // 年级 1.准研究生、2.研一、3.研二、4.研三
+          // publicSubjectFirst: '1,2', // 初试公共科目
+          // professionalSubjectFirst: '初试专业科目', // 初试专业科目，逗号分割
           answerWill: '1, 2', //  回答意愿   1:13大学科 2：公共科目类 3：复试科目类问题咨询 4：考研四大选择题与考研规划问题 5 院校及专业咨询
           educationPicture: ['https://crm-test.jingdaka.com/pic/1527047890608_23aedf045bc244caa2130f0416e605c7.jpg', 'https://crm-test.jingdaka.com/pic/1527047890608_23aedf045bc244caa2130f0416e605c7.jpg']
         }
