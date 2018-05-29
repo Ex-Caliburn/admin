@@ -4,22 +4,62 @@
     <el-table
       :data="tableData5"
       style="width: 100%">
-      <el-table-column
-        label="昵称"
-        prop="nickName">
+      <el-table-column type="expand">
+        <template slot-scope="props">
+          <el-form label-position="left" inline class="demo-table-expand">
+            <el-form-item label="初试专业科目">
+              <span>{{ props.row.shopId }}</span>
+            </el-form-item>
+            <el-form-item label="硕士专业大类">
+              <span>{{ props.row.postgraduateMajorTypeId }}</span>
+            </el-form-item>
+            <el-form-item label="年级">
+              <span>{{ props.row.grade }}</span>
+            </el-form-item>
+            <el-form-item label="学习方式">
+              <span>{{ props.row.studyMode }}</span>
+            </el-form-item>
+            <el-form-item label="回答意愿">
+              <span>{{ props.row.answerWill }}</span>
+            </el-form-item>
+            <el-form-item label="初试公共科目">
+              <span>{{ props.row.desc }}</span>
+            </el-form-item>
+            <el-form-item label="录取证明图片">
+              <!--<img src="https://crm-test.jingdaka.com/pic/1527047890608_23aedf045bc244caa2130f0416e605c7.jpg" alt="">-->
+              <image-previewer :prePictureList="props.row.educationPicture">
+              </image-previewer>
+            </el-form-item>
+            <el-form-item label="推荐人">
+              <span>{{ props.row.desc }}</span>
+            </el-form-item>
+          </el-form>
+        </template>
       </el-table-column>
       <el-table-column
-        label="学校"
-        prop="schoolName">
+        label="真实姓名"
+        prop="userName">
       </el-table-column>
       <el-table-column
-        label="专业"
-        prop="majorName">
+        label="手机号"
+        prop="phoneNumber">
       </el-table-column>
-      <!--<el-table-column-->
-        <!--label="年级"-->
-        <!--prop="grade">-->
-      <!--</el-table-column>-->
+      <el-table-column
+        label="本科学校"
+        prop="undergraduateSchoolId">
+      </el-table-column>
+      <el-table-column
+        label="研究生学校"
+        prop="undergraduateSchoolId">
+      </el-table-column>
+      <el-table-column
+        label="硕士阶段学号"
+        prop="postgraduateNumber">
+      </el-table-column>
+      <el-table-column
+        label="初试专业科目"
+        prop="publicSubjectFirst">
+      </el-table-column>
       <el-table-column
         fixed="right"
         prop="desc" label="操作" min-width="200">
@@ -131,7 +171,9 @@
 
   export default {
     name: 'audit',
-    components: {},
+    components: {
+      ImagePreviewer
+    },
     mixins: [pagination],
     directives: {},
     data () {
@@ -189,7 +231,10 @@
           pageNum: 1
         })
           .then(res => {
-            this.tableData5 = res
+            res.map(item => {
+              // item.
+            })
+            console.log(res)
           }).catch(err => {
             console.log(err)
           })

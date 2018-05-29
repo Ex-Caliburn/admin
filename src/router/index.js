@@ -29,31 +29,31 @@ Vue.use(Router)
  **/
 export const constantRouterMap = [
   { path: '/login', component: _import('login/index'), hidden: true },
-  // { path: '/authredirect', component: _import('login/authredirect'), hidden: true },
+  { path: '/authredirect', component: _import('login/authredirect'), hidden: true },
   { path: '/404', component: _import('errorPage/404'), hidden: true },
   { path: '/401', component: _import('errorPage/401'), hidden: true },
-  // {
-  //   path: '',
-  //   component: Layout,
-  //   redirect: 'dashboard',
-  //   children: [{
-  //     path: 'dashboard',
-  //     component: _import('dashboard/index'),
-  //     name: 'dashboard',
-  //     meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
-  //   }]
-  // },
-  // {
-  //   path: '/documentation',
-  //   component: Layout,
-  //   redirect: '/documentation/index',
-  //   children: [{
-  //     path: 'index',
-  //     component: _import('documentation/index'),
-  //     name: 'documentation',
-  //     meta: { title: 'documentation', icon: 'documentation', noCache: true }
-  //   }]
-  // },
+  {
+    path: '',
+    component: Layout,
+    redirect: 'dashboard',
+    children: [{
+      path: 'dashboard',
+      component: _import('dashboard/index'),
+      name: 'dashboard',
+      meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
+    }]
+  },
+  {
+    path: '/documentation',
+    component: Layout,
+    redirect: '/documentation/index',
+    children: [{
+      path: 'index',
+      component: _import('documentation/index'),
+      name: 'documentation',
+      meta: { title: 'documentation', icon: 'documentation', noCache: true }
+    }]
+  },
   {
     path: '/audit',
     component: Layout,
@@ -103,21 +103,20 @@ export const constantRouterMap = [
       name: 'feedback',
       meta: { title: 'feedback', icon: 'table', noCache: true }
     }]
+  },
+  {
+    path: '/icon',
+    component: Layout,
+    children: [{
+      path: 'index',
+      component: _import('svg-icons/index'),
+      name: 'icons',
+      meta: { title: 'icons', icon: 'icon', noCache: true }
+    }]
   }
-  // {
-  //   path: '/icon',
-  //   component: Layout,
-  //   children: [{
-  //     path: 'index',
-  //     component: _import('svg-icons/index'),
-  //     name: 'icons',
-  //     meta: { title: 'icons', icon: 'icon', noCache: true }
-  //   }]
-  // }
 ]
 
 export default new Router({
-  // base: '/kylsServer/',
   mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap

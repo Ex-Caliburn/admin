@@ -9,15 +9,13 @@ baseRequest.defaults.withCredentials = true
 
 // 对所有的数据响应检查是否登录
 baseRequest.interceptors.response.use(function (res) {
-  console.log(res)
-  return Promise.resolve(res.data.msg)
+  return Promise.resolve(res.data.msg ||res.data.data)
   // if (res.data.code === 0) {
   //   return Promise.resolve(res.data.msg)
   // } else {
   //   return Promise.reject(res.data.msg)
   // }
 }, function (error) {
-  console.log(error)
   if (!error.response) {
     Router.replace('/Login')
   }
