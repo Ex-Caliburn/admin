@@ -2,69 +2,94 @@
   <div class="audit app-container">
     <div>
       <span class="title">姓名</span>
-      <span>{{userName}}</span>
+      <span>{{info.user_name}}</span>
+    </div>
+    <div>
+      <span class="title">状态</span>
+      <span>{{info.user_type === 3 ? '待审核' : '研究生'}}</span>
     </div>
     <div>
       <span class="title">电话</span>
-      <span>{{phoneNumber}}</span>
+      <span>{{info.phone_number}}</span>
     </div>
-    <!--undergraduateSchoolId: '222',-->
-    <!--undergraduateMajorId: '1123',-->
-    <!--postgraduateSchoolId: '1123',-->
-    <!--postgraduateMajorId: '1',-->
     <div>
       <span class="title">本科学校</span>
-      <span>{{userName}}</span>
+      <span>{{info.school_name}}</span>
     </div>
     <div>
       <span class="title">本科专业</span>
-      <span>{{userName}}</span>
+      <span>{{info.major_name}}</span>
     </div>
-    <div>
-      <span class="title">研究生学校</span>
-      <span>{{userName}}</span>
-    </div>
-    <div>
-      <span class="title">研究生专业</span>
-      <span>{{userName}}</span>
-    </div>
-    <div>
-      <span class="title">专业大类</span>
-      <span>{{majorTypesArr[postgraduateMajorTypeId - 1]}}</span>
-    </div>
+    <!--<div>-->
+      <!--<span class="title">研究生学校</span>-->
+      <!--<span>{{userName}}</span>-->
+    <!--</div>-->
+    <!--<div>-->
+      <!--<span class="title">研究生专业</span>-->
+      <!--<span>{{userName}}</span>-->
+    <!--</div>-->
+    <!--<div>-->
+      <!--<span class="title">专业大类</span>-->
+      <!--<span>{{majorTypesArr[info.postgraduateMajorTypeId - 1]}}</span>-->
+    <!--</div>-->
     <div>
       <span class="title">学位性质</span>
-      <span>{{degreesArr[degreeNature]}}</span>
+      <span>{{degreesArr[info.degree_nature - 1]}}</span>
     </div>
     <div>
       <span class="title">就读学习方式</span>
-      <span>{{studyModesArr[studyMode]}}</span>
+      <span>{{studyModesArr[info.study_mode - 1]}}</span>
     </div>
     <div>
       <span class="title">年级</span>
-      <span>{{gradesArr[grade]}}</span>
+      <span>{{gradesArr[info.grade - 1]}}</span>
     </div>
     <div>
-      <!--todo-->
       <span class="title">初试公共科目</span>
-      <span>{{publicSubjectFirstArr[publicSubjectFirst]}}</span>
+      <span class="MR20" v-for=" item in info.public_subject_first">{{item && publicSubjectFirstArr[item - 14].txt}}</span>
     </div>
     <div>
       <span class="title">初试专业科目</span>
-      <span>{{professionalSubjectFirst}}</span>
+      <span>{{info.professional_subject_first}}</span>
     </div>
     <div>
-      <span class="title">回答意愿</span>
-      <span>{{answerWill}}</span>
+      <span class="title">星级</span>
+      <span>{{info.credit_score_status}}</span>
+    </div>
+    <!--<div>-->
+      <!--<span class="title">回答意愿</span>-->
+      <!--<span>{{info.answerWill}}</span>-->
+    <!--</div>-->
+    <div>
+      <span class="title">邀请码</span>
+      <span>{{info.invite_code}}</span>
+    </div>
+    <div>
+      <span class="title">注册时间</span>
+      <span>{{info.created_at}}</span>
+    </div>
+    <div>
+      <span class="title">回答耗时</span>
+      <span>{{info.avg_answer_time}}</span>
+    </div>
+    <div>
+      <span class="title">信誉分</span>
+      <span>{{info.credit_score}}</span>
+    </div>
+    <div>
+      <span class="title">余额</span>
+      <span>{{info.amount_count}}</span>
     </div>
     <div>
       <span class="title">拟录取证明图片</span>
-      <image-previewer :prePictureList="educationPicture"></image-previewer>
+      <image-previewer :prePictureList="info.educationPicture"></image-previewer>
     </div>
-    <p>
-    </p>
-  </div>
 
+    <div>
+      <el-button v-if="info.user_type === 3" @click="updatePostgraduateStatus" type="primary">通过审核</el-button>
+    </div>
+
+  </div>
 </template>
 
 <script>
@@ -145,6 +170,7 @@
       choose: false
     }
   ]
+  import request from '@/api/request'
 
   export default {
     name: 'audit',
@@ -154,38 +180,62 @@
     directives: {},
     data () {
       return {
+        pgUserId: this.$route.query.pgUserId,
+        info: {
+          // "credit_score": 60,
+          // "id_number": null,
+          // "user_name": "张超",
+          // "education_pictures": "image/2018/5/21/b6365b8fee6c41ecbbea10f6a5a9bb06.jpg",
+          // "school_name": "上海大学",
+          // "created_at": 1526915119000,
+          // "question_status": 0,
+          // "major_name": "第四纪地质学\t070905",
+          // "professional_subject_first": "电磁场理论",
+          // "amount_count": 0,
+          // "avg_answer_time": 0,
+          // "user_type": 2,
+          // "user_id": 1025,
+          // "faceurl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLm5x09VxIThGvjNJ8koLTjm8pGqJSbykMFQafrOWpnHA3IFC7B80PGic5abjhPx8x1fCFfsUId0Q/132",
+          // "grade": 3,
+          // "study_mode": 1,
+          // "public_subject_first": "14,15,18",
+          // "phone_number": "18800201893",
+          // "invite_code": "4jru0m",
+          // "degree_nature": 1,
+          // "credit_score_status": null
+        },
         degreesArr,
         studyModesArr,
         gradesArr,
         publicSubjectFirstArr,
         majorTypesArr,
-        willTypes,
-        userId: 123,
-        userName: '李四',
-        phoneNumber: 17223422334,
-        undergraduateSchoolId: '222',
-        undergraduateMajorId: '1123',
-        postgraduateSchoolId: '1123',
-        postgraduateMajorTypeId: 111, // 专业大类
-        postgraduateMajorId: '1',
-        postgraduateNumber: '2',
-        degreeNature: 1, //  学位性质 1学术型、2专业型
-        studyMode: 1, // 就读学习方式 1:全日制、2:非全日制
-        grade: 1, // 年级 1.准研究生、2.研一、3.研二、4.研三
-        publicSubjectFirst: '1,2', // 初试公共科目
-        professionalSubjectFirst: '初试专业科目', // 初试专业科目，逗号分割
-        answerWill: '1, 2', //  回答意愿   1:13大学科 2：公共科目类 3：复试科目类问题咨询 4：考研四大选择题与考研规划问题 5 院校及专业咨询
-        educationPicture: ['https://crm-test.jingdaka.com/pic/1527047890608_23aedf045bc244caa2130f0416e605c7.jpg']
+        willTypes
       }
+    },
+    mounted () {
+      this.init()
     },
     methods: {
       init () {
+        request.get('getPostgraduateDetailInfoByUserId', {
+          pgUserId: this.pgUserId
+        })
+          .then(res => {
+            res.educationPicture = res.educationPicture ? res.educationPicture.split(',') : []
+            res.public_subject_first = res.public_subject_first ? res.public_subject_first.split(',') : []
+            this.info = res
+          }).catch(err => {
+            console.log(err)
+          })
       },
-      audit () {
-      },
-      getList () {
-      },
-      jumpPage () {
+      updatePostgraduateStatus () {
+        request.get('updatePostgraduateStatus', {
+          pgUserId: this.pgUserId
+        }).then(res => {
+            this.message.success('操作成功')
+          }).catch(err => {
+            console.log(err)
+          })
       }
     }
   }
@@ -193,7 +243,6 @@
 
 <style scoped rel="stylesheet/scss" lang="scss">
   .audit{
-    padding:20px;
     div{
       margin: 20px 0;
       .title{
@@ -203,7 +252,7 @@
         margin-right: 50px;
         text-align: right;
       }
-      span:last-child{
+      span{
         color: #8b97a4;
       }
     }

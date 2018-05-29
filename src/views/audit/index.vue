@@ -5,6 +5,13 @@
       :data="tableData5"
       style="width: 100%">
       <el-table-column
+        label="头像"
+        prop="nickName">
+        <template slot-scope="scope">
+          <img class="avatar" :src="scope.row.faceUrl"></img>
+        </template>
+      </el-table-column>
+      <el-table-column
         label="昵称"
         prop="nickName">
       </el-table-column>
@@ -16,17 +23,30 @@
         label="专业"
         prop="majorName">
       </el-table-column>
-      <!--<el-table-column-->
-        <!--label="年级"-->
-        <!--prop="grade">-->
-      <!--</el-table-column>-->
+      <el-table-column
+        label="年级"
+        prop="grade">
+        <template slot-scope="scope">
+          {{gradesArr[scope.row.grade - 1]}}
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="信誉"
+        prop="creditScore">
+      </el-table-column>
+      <el-table-column
+        label="星级"
+        prop="creditScoreStatus">
+      </el-table-column>
+      <el-table-column
+        label="回答耗时"
+        prop="avgAnswerTime">
+      </el-table-column>
       <el-table-column
         fixed="right"
-        prop="desc" label="操作" min-width="200">
+        prop="desc" label="操作" min-width="100">
         <template slot-scope="scope">
           <el-button type="primary" size="medium" class="cur-pointer" @click="goDetail(scope.row.userId)">详情
-          </el-button>
-          <el-button type="primary" size="medium" class="cur-pointer" @click="audit(scope.row.userId)">通过审核
           </el-button>
         </template>
       </el-table-column>
@@ -35,9 +55,9 @@
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      :current-page="page.currentPage"
+      :current-page="page.pageNum"
       :page-sizes="page.pageSizes"
-      :page-size="page.pageLimit"
+      :page-size="page.pageSize"
       layout="->, sizes, prev, pager, next, jumper"
       :total="totalCount">
     </el-pagination>
@@ -122,12 +142,7 @@
   ]
 
   import request from '@/api/request'
-  import ImagePreviewer from '@/components/ImagePreviewer'
   import pagination from '@/mixins/pagination'
-  // import { mapGetters } from 'vuex'
-  // import permission from 'mixins/permission'
-  // import CONSTDATA from '@/js/const'
-  // import util from '../js/util'
 
   export default {
     name: 'audit',
@@ -138,7 +153,6 @@
       const a = []
       for (let i = 0; i < 11; i++) {
         const temp = {
-          "userId": 1025,
           "nickName": "郊外的时光",
           "faceUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLm5x09VxIThGvjNJ8koLTjm8pGqJSbykMFQafrOWpnHA3IFC7B80PGic5abjhPx8x1fCFfsUId0Q/132",
           "schoolName": "上海大学",
@@ -147,8 +161,6 @@
           "creditScore": 60,
           "creditScoreStatus": null,
           "avgAnswerTime": 0,
-
-
           userId: 123,
           userName: '李四',
           phoneNumber: 17223422334,
@@ -185,11 +197,12 @@
     methods: {
       init () {
         request.get('getPostgraduateInfoList', {
-          pageSize: 10,
-          pageNum: 1
+          pageSize: this.page.pageSize,
+          pageNum: this.page.pageNum
         })
           .then(res => {
             this.tableData5 = res
+            this.totalCount = res.count
           }).catch(err => {
             console.log(err)
           })
@@ -197,7 +210,7 @@
       audit () {
       },
       goDetail (id) {
-        this.routePush('pSDetail', { id: id })
+        this.routePush('pSDetail', { pgUserId: id })
       },
       jumpPage () {
         this.init()
@@ -208,6 +221,11 @@
 
 
 <style scoped>
+  .avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
   .demo-table-expand {
     font-size: 0;
   }

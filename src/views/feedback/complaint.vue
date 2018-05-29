@@ -26,8 +26,6 @@
       <el-table-column
         label="时间">
         <template slot-scope="scope">
-          <!--{{ scope.row.created_at || format('MM/DD/YYYY') }}-->
-          {{ scope.row.created_at }}
         </template>
       </el-table-column>
     </el-table>
@@ -65,19 +63,9 @@
     props: {},
     data () {
       return {
-        tableData: [
-          // {
-          //   "complain_id": 3,
-          //   "user_id": 2,
-          //   "user_name": "夏壮",
-          //   "complain_type": 5,
-          //   "created_at": 1527091439000,
-          //   "content": "213123123",
-          //   "pictures": "",
-          //   "status": 1
-          // }
-        ],
-        complainTypeArr
+        tableData: [],
+        complainTypeArr,
+        pictures: ['https://crm-test.jingdaka.com/pic/1527047890608_23aedf045bc244caa2130f0416e605c7.jpg'],
       }
     },
 
@@ -89,7 +77,7 @@
 
     methods: {
       init () {
-        request.get('getFeedbackList', {
+        request.get('getComplainList', {
           pageSize: this.page.pageSize,
           pageNum: this.page.pageNum
         })

@@ -56,7 +56,7 @@
     },
     data () {
       return {
-        domain: '',
+        domain: 'https://kyls-test.oss-cn-hangzhou.aliyuncs.com/',
         currentIndex: null,
         preview: false,
         scale: 0.2,

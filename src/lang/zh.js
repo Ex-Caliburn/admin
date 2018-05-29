@@ -1,5 +1,8 @@
 export default {
   route: {
+    questionDetail: '问题详情',
+    pSDetail: '研究生详情',
+    complaint: '投诉',
     feedback: '反馈',
     question: '问答',
     dashboard: '首页',

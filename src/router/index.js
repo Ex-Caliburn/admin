@@ -44,6 +44,7 @@ export const constantRouterMap = [
     }]
   },
   {
+    hidden: true,
     path: '/documentation',
     component: Layout,
     redirect: '/documentation/index',
@@ -68,6 +69,7 @@ export const constantRouterMap = [
       name: 'audit',
       meta: { title: 'audit', icon: 'table', noCache: true }
     }, {
+      hidden: true,
       path: 'pSDetail',
       component: _import('audit/pSDetail'),
       name: 'pSDetail',
@@ -86,7 +88,14 @@ export const constantRouterMap = [
       path: 'question',
       component: _import('question/index'),
       name: 'question',
-      meta: { title: 'question', icon: 'table', noCache: true }
+      meta: { title: 'question', icon: 'form', noCache: true }
+    },
+      {
+      hidden: true,
+      path: 'questionDetail',
+      component: _import('question/questionDetail'),
+      name: 'questionDetail',
+      meta: { title: 'questionDetail', icon: 'form', noCache: true }
     }]
   },
   {
@@ -94,26 +103,31 @@ export const constantRouterMap = [
     component: Layout,
     redirect: '/feedback/index',
     meta: {
-      title: 'audit',
-      icon: 'chart'
+      title: 'feedback',
+      icon: 'message'
     },
     children: [{
       path: 'feedback',
       component: _import('feedback/index'),
       name: 'feedback',
-      meta: { title: 'feedback', icon: 'table', noCache: true }
-    }]
-  },
-  {
-    path: '/icon',
-    component: Layout,
-    children: [{
-      path: 'index',
-      component: _import('svg-icons/index'),
-      name: 'icons',
-      meta: { title: 'icons', icon: 'icon', noCache: true }
+      meta: { title: 'feedback', icon: 'message', noCache: true }
+    },{
+      path: 'complaint',
+      component: _import('feedback/complaint'),
+      name: 'complaint',
+      meta: { title: 'complaint', icon: 'message', noCache: true }
     }]
   }
+  // {
+  //   path: '/icon',
+  //   component: Layout,
+  //   children: [{
+  //     path: 'index',
+  //     component: _import('svg-icons/index'),
+  //     name: 'icons',
+  //     meta: { title: 'icons', icon: 'icon', noCache: true }
+  //   }]
+  // }
 ]
 
 export default new Router({

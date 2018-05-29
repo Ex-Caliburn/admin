@@ -35,9 +35,9 @@
     <!--<el-pagination-->
       <!--@size-change="handleSizeChange"-->
       <!--@current-change="handleCurrentChange"-->
-      <!--:current-page="page.currentPage"-->
+      <!--:current-page="page.pageNum"-->
       <!--:page-sizes="page.pageSizes"-->
-      <!--:page-size="page.pageLimit"-->
+      <!--:page-size="page.pageSize"-->
       <!--layout="->, sizes, prev, pager, next, jumper"-->
       <!--:total="totalCount">-->
     <!--</el-pagination>-->

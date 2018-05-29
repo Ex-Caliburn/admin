@@ -35,6 +35,9 @@ const base = '/api/kylsServer/'
 // 请求地址：http://localhost:20020/question/detail?questionId=114
 //   请求方式：get
 
+// 请求地址：localhost:20020/question/checkRewardQuestion?questionId=114&status=0
+//   请求方式：get
+
 class Api {
   /* 账号列表查询与相关操作 */
   login = 'login'
@@ -47,6 +50,7 @@ class Api {
   getFeedbackList = 'feedback/list' // 本科生反馈
   getQuestionList = 'question/list' // 本科生反馈
   getQuestionDetail = 'question/detail' // 本科生反馈
+  checkRewardQuestion = 'question/checkRewardQuestion' // localhost
   getApi (name) {
     return base + this[name]
   }
