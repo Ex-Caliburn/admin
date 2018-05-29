@@ -62,7 +62,7 @@ module.exports = {
     assetsSubDirectory: 'static',
 
     // you can set by youself according to actual condition
-    assetsPublicPath: './',
+    assetsPublicPath: '/',
 
     /**
      * Source Maps
