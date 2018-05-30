@@ -6,6 +6,20 @@ import 'nprogress/nprogress.css' // progress bar style
 // import { getToken } from '@/utils/auth' // getToken from cookie
 
 NProgress.configure({ showSpinner: false })// NProgress Configuration
+// let flag = true
+// router.beforeEach((to, from, next) => {
+//   console.log(JSON.stringify(store.getters.user.user))
+//   if (store.getters.user.user) {
+//     next()
+//   } else {
+//     if (flag) {
+//       flag = false
+//       next({ path: '/login' })
+//     } else {
+//       next()
+//     }
+//   }
+// })
 
 // // permissiom judge function
 // function hasPermission (roles, permissionRoles) {
