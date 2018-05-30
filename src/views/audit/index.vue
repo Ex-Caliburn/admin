@@ -8,7 +8,7 @@
         label="头像"
         prop="nickName">
         <template slot-scope="scope">
-          <img class="avatar" :src="scope.row.faceUrl"></img>
+          <avatar :key="scope.row.faceUrl" class="avatar" :pictureSrc="scope.row.faceUrl"></avatar>
         </template>
       </el-table-column>
       <el-table-column
@@ -141,12 +141,15 @@
     }
   ]
 
+  import avatar from '@/components/avatar'
   import request from '@/api/request'
   import pagination from '@/mixins/pagination'
 
   export default {
     name: 'audit',
-    components: {},
+    components: {
+      avatar
+    },
     mixins: [pagination],
     directives: {},
     data () {
@@ -201,7 +204,7 @@
           pageNum: this.page.pageNum
         })
           .then(res => {
-            this.tableData5 = res
+            this.tableData5 = res.data
             this.totalCount = res.count
           }).catch(err => {
             console.log(err)
