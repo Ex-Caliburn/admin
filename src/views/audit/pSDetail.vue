@@ -34,7 +34,7 @@
     <!--</div>-->
     <div>
       <span class="title">学位性质</span>
-      <span>{{degreesArr[info.degree_nature - 1]}}</span>
+      <span>{{degreesArr[(info.degree_nature + '').slice(0, 1) - 1]}}</span>
     </div>
     <div>
       <span class="title">就读学习方式</span>
@@ -66,7 +66,7 @@
     </div>
     <div>
       <span class="title">注册时间</span>
-      <span>{{info.created_at}}</span>
+      <span>{{info.created_at | dateFormat("yyyy-MM-dd hh:mm:ss")}}</span>
     </div>
     <div>
       <span class="title">回答耗时</span>
@@ -94,6 +94,8 @@
 
 <script>
   import ImagePreviewer from '@/components/ImagePreviewer'
+
+  import { dateFormat } from '@/utils/'
 
   const degreesArr = ['学术型', '专业型']
   const studyModesArr = ['全日制', '非全日制']
@@ -177,33 +179,13 @@
     components: {
       ImagePreviewer
     },
-    directives: {},
+    filters: {
+      dateFormat
+    },
     data () {
       return {
         pgUserId: this.$route.query.pgUserId,
-        info: {
-          // "credit_score": 60,
-          // "id_number": null,
-          // "user_name": "张超",
-          // "education_pictures": "image/2018/5/21/b6365b8fee6c41ecbbea10f6a5a9bb06.jpg",
-          // "school_name": "上海大学",
-          // "created_at": 1526915119000,
-          // "question_status": 0,
-          // "major_name": "第四纪地质学\t070905",
-          // "professional_subject_first": "电磁场理论",
-          // "amount_count": 0,
-          // "avg_answer_time": 0,
-          // "user_type": 2,
-          // "user_id": 1025,
-          // "faceurl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLm5x09VxIThGvjNJ8koLTjm8pGqJSbykMFQafrOWpnHA3IFC7B80PGic5abjhPx8x1fCFfsUId0Q/132",
-          // "grade": 3,
-          // "study_mode": 1,
-          // "public_subject_first": "14,15,18",
-          // "phone_number": "18800201893",
-          // "invite_code": "4jru0m",
-          // "degree_nature": 1,
-          // "credit_score_status": null
-        },
+        info: {},
         degreesArr,
         studyModesArr,
         gradesArr,

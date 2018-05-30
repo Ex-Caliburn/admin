@@ -41,6 +41,9 @@
       <el-table-column
         label="回答耗时"
         prop="avgAnswerTime">
+        <template slot-scope="scope">
+          {{formatDuration(scope.row.avgAnswerTime)}}M
+        </template>
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -143,6 +146,7 @@
 
   import avatar from '@/components/avatar'
   import request from '@/api/request'
+  import { formatDuration } from '@/utils/'
   import pagination from '@/mixins/pagination'
 
   export default {
@@ -198,6 +202,7 @@
       this.init()
     },
     methods: {
+      formatDuration: formatDuration,
       init () {
         request.get('getPostgraduateInfoList', {
           pageSize: this.page.pageSize,
