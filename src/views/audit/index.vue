@@ -2,8 +2,27 @@
   <div class="app-container">
 
     <el-table
-      :data="tableData5"
+      :data="tableData"
+      row-key="userId"
       style="width: 100%">
+      <el-table-column type="expand">
+        <template slot-scope="props">
+          <el-form label-position="left" inline class="demo-table-expand">
+            <el-form-item show-overflow-tooltip="true" label="个性介绍">
+              <span>{{ props.row.silence}}</span>
+            </el-form-item>
+            <el-form-item show-overflow-tooltip="true" label="指导意见">
+              <span>{{ props.row.opinion }}</span>
+            </el-form-item>
+            <el-form-item show-overflow-tooltip="true" label="吸晴问题">
+              <span>{{ props.row.questionContent }}</span>
+            </el-form-item>
+            <el-form-item show-overflow-tooltip="true" label="回答">
+              <span>{{ props.row.answerContent }}</span>
+            </el-form-item>
+          </el-form>
+        </template>
+      </el-table-column>
       <el-table-column
         label="头像"
         prop="nickName">
@@ -157,37 +176,6 @@
     mixins: [pagination],
     directives: {},
     data () {
-      const a = []
-      for (let i = 0; i < 11; i++) {
-        const temp = {
-          "nickName": "郊外的时光",
-          "faceUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLm5x09VxIThGvjNJ8koLTjm8pGqJSbykMFQafrOWpnHA3IFC7B80PGic5abjhPx8x1fCFfsUId0Q/132",
-          "schoolName": "上海大学",
-          "majorName": "电磁场与微波技术\t080904",
-          "grade": 3,
-          "creditScore": 60,
-          "creditScoreStatus": null,
-          "avgAnswerTime": 0,
-          userId: 123,
-          userName: '李四',
-          phoneNumber: 17223422334,
-          undergraduateSchoolId: '222',
-          undergraduateMajorId: '1123',
-          postgraduateSchoolId: '1123',
-          postgraduateMajorTypeId: 111, // 专业大类
-          postgraduateMajorId: '1',
-          postgraduateNumber: '2',
-          degreeNature: 1, //  学位性质 1学术型、2专业型
-          studyMode: 1, // 就读学习方式 1:全日制、2:非全日制
-          // grade: 1, // 年级 1.准研究生、2.研一、3.研二、4.研三
-          // publicSubjectFirst: '1,2', // 初试公共科目
-          // professionalSubjectFirst: '初试专业科目', // 初试专业科目，逗号分割
-          answerWill: '1, 2', //  回答意愿   1:13大学科 2：公共科目类 3：复试科目类问题咨询 4：考研四大选择题与考研规划问题 5 院校及专业咨询
-          educationPicture: ['https://crm-test.jingdaka.com/pic/1527047890608_23aedf045bc244caa2130f0416e605c7.jpg', 'https://crm-test.jingdaka.com/pic/1527047890608_23aedf045bc244caa2130f0416e605c7.jpg']
-        }
-        temp.id = i
-        a.push(temp)
-      }
       return {
         degreesArr,
         studyModesArr,
@@ -195,7 +183,7 @@
         publicSubjectFirstArr,
         majorTypesArr,
         willTypes,
-        tableData5: a
+        tableData: []
       }
     },
     mounted () {
@@ -209,7 +197,7 @@
           pageNum: this.page.pageNum
         })
           .then(res => {
-            this.tableData5 = res.data
+            this.tableData = res.data
             this.totalCount = res.count
           }).catch(err => {
             console.log(err)
