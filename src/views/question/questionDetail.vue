@@ -74,7 +74,7 @@
           questionId: this.questionId,
           status: 0
         }).then(res => {
-            this.message.success('操作成功')
+            this.$message.success('审核成功')
           }).catch(err => {
             console.log(err)
           })
