@@ -3,26 +3,25 @@
 
     <el-table
       :data="tableData"
-      row-key="userId"
       style="width: 100%">
-      <el-table-column type="expand">
-        <template slot-scope="props">
-          <el-form label-position="left" inline class="demo-table-expand">
-            <el-form-item show-overflow-tooltip="true" label="个性介绍">
-              <span>{{ props.row.silence}}</span>
-            </el-form-item>
-            <el-form-item show-overflow-tooltip="true" label="指导意见">
-              <span>{{ props.row.opinion }}</span>
-            </el-form-item>
-            <el-form-item show-overflow-tooltip="true" label="吸晴问题">
-              <span>{{ props.row.questionContent }}</span>
-            </el-form-item>
-            <el-form-item show-overflow-tooltip="true" label="回答">
-              <span>{{ props.row.answerContent }}</span>
-            </el-form-item>
-          </el-form>
-        </template>
-      </el-table-column>
+      <!--<el-table-column type="expand">-->
+        <!--<template slot-scope="props">-->
+          <!--<el-form label-position="left" inline class="demo-table-expand">-->
+            <!--<el-form-item show-overflow-tooltip="true" label="个性介绍">-->
+              <!--<span>{{ props.row.silence}}</span>-->
+            <!--</el-form-item>-->
+            <!--<el-form-item show-overflow-tooltip="true" label="指导意见">-->
+              <!--<span>{{ props.row.opinion }}</span>-->
+            <!--</el-form-item>-->
+            <!--<el-form-item show-overflow-tooltip="true" label="吸晴问题">-->
+              <!--<span>{{ props.row.questionContent }}</span>-->
+            <!--</el-form-item>-->
+            <!--<el-form-item show-overflow-tooltip="true" label="回答">-->
+              <!--<span>{{ props.row.answerContent }}</span>-->
+            <!--</el-form-item>-->
+          <!--</el-form>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
       <el-table-column
         label="头像"
         prop="nickName">

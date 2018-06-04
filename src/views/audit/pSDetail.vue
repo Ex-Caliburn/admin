@@ -86,6 +86,23 @@
     </div>
 
     <div>
+      <span class="title">个性介绍</span>
+      <span>{{info.silence}}</span>
+    </div>
+    <div>
+      <span class="title">指导意见</span>
+      <span>{{info.opinion}}</span>
+    </div>
+    <div>
+      <span class="title">吸晴问题</span>
+      <span>{{info.questionContent}}</span>
+    </div>
+    <div>
+      <span class="title">吸晴回答</span>
+      <span>{{info.answerContent}}</span>
+    </div>
+
+    <div>
       <el-button v-if="info.user_type === 3" @click="updatePostgraduateStatus" type="primary">通过审核</el-button>
     </div>
 
