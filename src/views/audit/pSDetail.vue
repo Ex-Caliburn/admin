@@ -220,7 +220,7 @@
           pgUserId: this.pgUserId
         })
           .then(res => {
-            res.educationPicture = res.educationPicture ? res.educationPicture.split(',') : []
+            res.educationPicture = res.education_pictures ? res.education_pictures.split(',') : []
             res.public_subject_first = res.public_subject_first ? res.public_subject_first.split(',') : []
             this.info = res
           }).catch(err => {

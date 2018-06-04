@@ -9,7 +9,7 @@ export default {
         pageSize: 10,
         pageNum: 1
       },
-      totalCount: 100
+      totalCount: 0
     }
   },
   methods: {

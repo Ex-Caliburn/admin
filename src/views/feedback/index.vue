@@ -6,7 +6,7 @@
       <el-table-column
         label="投诉的问题类型">
         <template slot-scope="scope">
-          {{complainTypeArr[scope.row.complain_type]}}
+          {{complainTypeArr[scope.row.complain_type-1]}}
         </template>
       </el-table-column>
       <el-table-column
@@ -19,15 +19,13 @@
       <el-table-column
         label="投诉图片">
         <template slot-scope="scope">
-          <!--{{scope.row.pictures}}-->
           <image-previewer :prePictureList="scope.row.pictures"></image-previewer>
         </template>
       </el-table-column>
       <el-table-column
         label="时间">
         <template slot-scope="scope">
-          <!--{{ scope.row.created_at || format('MM/DD/YYYY') }}-->
-          {{ scope.row.created_at }}
+          {{ scope.row.created_at | dateFormat("yyyy-MM-dd hh:mm:ss")}}
         </template>
       </el-table-column>
     </el-table>
@@ -48,7 +46,7 @@
 <script>
   import ImagePreviewer from '@/components/ImagePreviewer'
 
-  // import {format} from 'date-fns/esm'
+  import { dateFormat } from '@/utils/'
   import request from '@/api/request'
   import pagination from '@/mixins/pagination'
 
@@ -60,7 +58,7 @@
     },
     mixins: [pagination],
     filters: {
-      // format: format
+      dateFormat
     },
     props: {},
     data () {
