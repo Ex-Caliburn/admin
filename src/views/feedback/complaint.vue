@@ -52,7 +52,7 @@
   import request from '@/api/request'
   import pagination from '@/mixins/pagination'
 
-  const complainTypeArr = ['功能异常','产品建议', '其它问题', '该研究生回答内容', '该研究生沟通态度问题', '其它问题']
+  const complainTypeArr = ['功能异常','产品建议', '其它问题', '', '该研究生回答内容', '该研究生沟通态度问题', '其它问题']
 
   export default {
     components: {
