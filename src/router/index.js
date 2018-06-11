@@ -99,6 +99,21 @@ export const constantRouterMap = [
     }]
   },
   {
+    path: '/invite',
+    component: Layout,
+    redirect: '/invite/index',
+    meta: {
+      title: 'invite',
+      icon: 'chart'
+    },
+    children: [{
+      path: 'invite',
+      component: _import('invite/index'),
+      name: 'invite',
+      meta: { title: 'invite', icon: 'form', noCache: true }
+    }]
+  },
+  {
     path: '/feedback',
     component: Layout,
     redirect: '/feedback/index',

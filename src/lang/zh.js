@@ -1,5 +1,6 @@
 export default {
   route: {
+    invite: '邀请统计',
     questionDetail: '问题详情',
     pSDetail: '研究生详情',
     complaint: '投诉',

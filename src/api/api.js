@@ -49,6 +49,7 @@ class Api {
   getComplainList = 'complain/list' // 研究生投诉接口
   getFeedbackList = 'feedback/list' // 本科生反馈
   getQuestionList = 'question/list' // 本科生反馈
+  getInviteInfoList = 'inviteInfo/list' // 本科生反馈
   getQuestionDetail = 'question/detail' // 本科生反馈
   checkRewardQuestion = 'question/checkRewardQuestion' // localhost
   getApi (name) {
