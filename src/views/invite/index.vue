@@ -95,7 +95,7 @@
         })
           .then(res => {
             this.totalCount = res.count
-            // this.tableData = res.data
+            this.tableData = res.data
           }).catch(err => {
             console.log(err)
           })
