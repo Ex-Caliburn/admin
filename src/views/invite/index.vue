@@ -70,17 +70,7 @@
     directives: {},
     data () {
       return {
-        tableData: [{
-          "userId": 1536,
-          "nickName": "李佳旭",
-          "faceUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKyMDiaCgCKgSPuyibZ33CBqpQX8GXBbFN09QBqH9DsYf8NIy6w6YIJZItAQ5xopAXFoZuWudeA3o9Q/132",
-          "schoolName": "中国矿业大学(北京)",
-          "majorName": "矿产普查与勘探\t081801",
-          "grade": 2,
-          "creditScore": 60,
-          "creditScoreStatus": null,
-          "avgAnswerTime": 0
-        }]
+        tableData: []
       }
     },
     mounted () {
