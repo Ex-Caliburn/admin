@@ -162,9 +162,4 @@ Detailed changes for each release are documented in the [release notes](https://
 
 Copyright (c) 2017-present PanJiaChen
 
-<<<<<<< 81cc79085656f8d666f845a966b3d1e54b6a2c1a
-
-123123
-=======
 2222
->>>>>>> 22222
